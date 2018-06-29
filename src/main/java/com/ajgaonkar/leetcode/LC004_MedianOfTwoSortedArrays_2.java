@@ -7,13 +7,17 @@ public class LC004_MedianOfTwoSortedArrays_2 {
 	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 		int total = nums1.length+nums2.length;
 		if(total%2==0){
-			return (findKth((total/2)+1, nums1, nums2, 0, 0)+findKth((total/2), nums1, nums2, 0, 0))/2.0;
+			int v1 = findKth((total/2)+1, nums1, nums2, 0, 0);
+			int v2 = findKth((total/2), nums1, nums2, 0, 0);
+			return (v1 + v2)/2.0;
+			//return (findKth((total/2)+1, nums1, nums2, 0, 0)+findKth((total/2), nums1, nums2, 0, 0))/2.0;
 		}else{
 			return findKth((total/2)+1, nums1, nums2, 0, 0);
 		}
 	}
 
 	public int findKth(int k, int[] nums1, int[] nums2, int s1, int s2){
+		System.out.println("k = " + k + " s1 = " + s1 + " s2 = " + s2);
 		if(s1>=nums1.length)
 			return nums2[s2+k-1];
 

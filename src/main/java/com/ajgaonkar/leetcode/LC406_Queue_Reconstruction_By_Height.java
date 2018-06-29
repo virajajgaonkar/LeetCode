@@ -1,5 +1,6 @@
 package com.ajgaonkar.leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -16,7 +17,8 @@ public class LC406_Queue_Reconstruction_By_Height {
 				return o1[0]!=o2[0]?-o1[0]+o2[0]:o1[1]-o2[1];
 			}
 		});
-		List<int[]> res = new LinkedList<>();
+		//List<int[]> res = new LinkedList<>();
+		List<int[]> res = new ArrayList<>();
 		for(int[] cur : people){
 			res.add(cur[1],cur);
 		}
