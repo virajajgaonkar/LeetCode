@@ -11,19 +11,22 @@ public class LC234_Palindrome_Linked_List {
 	}
 
 	public boolean isPalindrome(ListNode head) {
-		ListNode fast = head, slow = head;
-		while (fast != null && fast.next != null) {
+		if(head == null){
+			return true;
+		}
+		ListNode fast = head;
+		ListNode slow = head;
+		while ((fast != null) && (fast.next != null)){
 			fast = fast.next.next;
 			slow = slow.next;
 		}
-		if (fast != null) { // odd nodes: let right half smaller
+		if(fast != null){
 			slow = slow.next;
 		}
 		slow = reverse(slow);
 		fast = head;
-
-		while (slow != null) {
-			if (fast.val != slow.val) {
+		while ((fast != null) && (slow!= null)){
+			if(fast.val != slow.val){
 				return false;
 			}
 			fast = fast.next;
@@ -32,14 +35,17 @@ public class LC234_Palindrome_Linked_List {
 		return true;
 	}
 
-	public ListNode reverse(ListNode head) {
+	private ListNode reverse(ListNode head){
 		ListNode prev = null;
-		while (head != null) {
-			ListNode next = head.next;
-			head.next = prev;
-			prev = head;
-			head = next;
+		ListNode current = head;
+		while (current != null){
+			ListNode next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
 		}
 		return prev;
 	}
+
+
 }
