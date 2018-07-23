@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//ToDo: LEARN
 public class LC336_Palindrome_Pairs {
 	public List<List<Integer>> palindromePairs(String[] words) {
 		List<List<Integer>> ret = new ArrayList<>();
