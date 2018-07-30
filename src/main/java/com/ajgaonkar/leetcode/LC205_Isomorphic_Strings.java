@@ -16,7 +16,7 @@ public class LC205_Isomorphic_Strings {
 			if(a[s.charAt(i)] != b[t.charAt(i)]){
 				return false;
 			}
-			a[s.charAt(i)] = i + 1;
+			a[s.charAt(i)] = i + 1; //0 is int default value, so we use i+1 to distinguish between default vs index 0
 			b[t.charAt(i)] = i + 1;
 		}
 		return true;

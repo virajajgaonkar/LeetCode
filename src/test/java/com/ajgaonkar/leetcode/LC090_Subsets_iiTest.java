@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class LC090_Subsets_iiTest {
-	//LC090_Subsets_ii test = new LC090_Subsets_ii();
-	LC090_Subsets_ii_2 test = new LC090_Subsets_ii_2();
+	LC090_Subsets_ii test = new LC090_Subsets_ii();
+	//LC090_Subsets_ii_2 test = new LC090_Subsets_ii_2();
 
 	@Test
 	public void test(){

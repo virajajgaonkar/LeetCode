@@ -3,19 +3,20 @@ package com.ajgaonkar.leetcode;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 
 import static org.junit.Assert.*;
 
-public class CollectionsCustomTreeTest {
+public class CollectionsCustomTree_2Test {
 	private static void printCollection(List<Integer> list){
 		final StringJoiner sj = new StringJoiner(",");
 		list.forEach(i -> sj.add(i.toString()));
 		System.out.println(sj.toString());
 	}
-	private static CollectionsCustomTree createTree(){
-		CollectionsCustomTree tree = new CollectionsCustomTree();
+	private static CollectionsCustomTree_2 createTree(){
+		CollectionsCustomTree_2 tree = new CollectionsCustomTree_2();
 		tree.add(6);
 		tree.add(4);
 		tree.add(2);
@@ -30,8 +31,8 @@ public class CollectionsCustomTreeTest {
 		return tree;
 	}
 
-	private static CollectionsCustomTree createTree2(){
-		CollectionsCustomTree tree = new CollectionsCustomTree();
+	private static CollectionsCustomTree_2 createTree2(){
+		CollectionsCustomTree_2 tree = new CollectionsCustomTree_2();
 		tree.add(10);
 		tree.add(5);
 		tree.add(15);
@@ -44,11 +45,11 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testCreate(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		List<Integer> res = tree.inOrder();
 		printCollection(res);
 
-		tree.printFunny();
+		//tree.printFunny();
 		tree.clearTree();
 
 		List<Integer> res2 = tree.inOrder();
@@ -57,7 +58,7 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testFind(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 
 		assertEquals(null, tree.find(-1));
 		assertEquals(null, tree.find(0));
@@ -74,7 +75,7 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testMirror(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		List<Integer> original = tree.inOrder();
 		tree.mirror();
 		List<Integer> mirror = tree.inOrder();
@@ -90,7 +91,7 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testOrdering() {
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11), tree.inOrder());
 		assertEquals(Arrays.asList(6,4,2,1,3,5,8,7,10,9,11), tree.preOrder());
 		assertEquals(Arrays.asList(1,3,2,5,4,7,9,11,10,8,6), tree.postOrder());
@@ -98,25 +99,25 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testHeight() {
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(4, tree.height());
 	}
 
 	@Test
 	public void testBFS(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(Arrays.asList(6,4,8,2,5,7,10,1,3,9,11), tree.printBFS());
 	}
 
 	@Test
 	public void testCountNodes(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(11, tree.countNodes());
 	}
 
 	@Test
 	public void testLeastCommonAncestor(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(tree.find(2), tree.leastCommonAncestor(tree.find(1), tree.find(3)));
 		assertEquals(tree.find(4), tree.leastCommonAncestor(tree.find(3), tree.find(5)));
 		assertEquals(tree.find(4), tree.leastCommonAncestor(tree.find(2), tree.find(5)));
@@ -132,22 +133,22 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testIsBST(){
-		CollectionsCustomTree tree1 = createTree();
+		CollectionsCustomTree_2 tree1 = createTree();
 		assertEquals(true, tree1.isBST());
 		tree1.mirror();
 		assertEquals(false, tree1.isBST());
 
-		CollectionsCustomTree tree2 = createTree2();
-		CollectionsCustomTree.TreeElement t8 = tree2.find(8);
-		t8.setRight(new CollectionsCustomTree.TreeElement(11));
-		CollectionsCustomTree.TreeElement t12 = tree2.find(12);
-		t12.setLeft(new CollectionsCustomTree.TreeElement(9));
+		CollectionsCustomTree_2 tree2 = createTree2();
+		CollectionsCustomTree_2.TreeElement t8 = tree2.find(8);
+		t8.setRight(new CollectionsCustomTree_2.TreeElement(11));
+		CollectionsCustomTree_2.TreeElement t12 = tree2.find(12);
+		t12.setLeft(new CollectionsCustomTree_2.TreeElement(9));
 		assertEquals(false, tree2.isBST());
 	}
 
 	@Test
 	public void testCountDupes(){
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		tree.add(1);
 		tree.add(5);
 		tree.add(7);
@@ -158,15 +159,16 @@ public class CollectionsCustomTreeTest {
 	@Test
 	public void testCreateBST(){
 		int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10,11};
-		CollectionsCustomTree tree = new CollectionsCustomTree();
+		CollectionsCustomTree_2 tree = new CollectionsCustomTree_2();
 		tree.createBST(arr);
 		assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11), tree.inOrder());
 	}
 
 	@Test
 	public void testPrintBoundary() {
-		CollectionsCustomTree tree = createTree();
-		List<Integer> list = tree.printBoundary();
+		CollectionsCustomTree_2 tree = createTree();
+		List<Integer> list = Collections.emptyList();
+		//List<Integer> list = tree.printBoundary();
 		//Correct
 //		assertEquals(Arrays.asList(6,4,2,1,3,5,7,9,11,10,8), list);
 		//InCorrect
@@ -175,21 +177,21 @@ public class CollectionsCustomTreeTest {
 
 	@Test
 	public void testPrintBoundaryEx() {
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		List<Integer> list = tree.printBoundaryEx();
 		assertEquals(Arrays.asList(6,4,2,1,3,5,7,9,11,10,8), list);
 	}
 
 	@Test
 	public void testPrintPaths() {
-		CollectionsCustomTree tree = createTree();
+		CollectionsCustomTree_2 tree = createTree();
 		assertEquals(Arrays.asList(Arrays.asList(6,4,2,1), Arrays.asList(6,4,2,3), Arrays.asList(6,8,10,9), Arrays.asList(6,8,10,11)), tree.printLongestPath());
 		assertEquals(Arrays.asList(Arrays.asList(6,4,2,1), Arrays.asList(6,4,2,3), Arrays.asList(6,4,5), Arrays.asList(6,8,7), Arrays.asList(6,8,10,9), Arrays.asList(6,8,10,11)), tree.printAllPaths());
 	}
 
 	@Test
 	public void testRemove(){
-		CollectionsCustomTree tree = new CollectionsCustomTree();
+		CollectionsCustomTree_2 tree = new CollectionsCustomTree_2();
 		tree.add(60);
 		tree.add(30);
 		tree.add(90);

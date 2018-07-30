@@ -9,8 +9,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class LC076_SubsetsTest {
-	//LC076_Subsets test = new LC076_Subsets();
-	LC076_Subsets_2 test = new LC076_Subsets_2();
+	LC076_Subsets test = new LC076_Subsets();
+	//LC076_Subsets_2 test = new LC076_Subsets_2();
 
 	@Test
 	public void test(){

@@ -82,9 +82,48 @@ public class CollectionsCustomTree {
 	//endregion
 
 	//region remove
-	private boolean remove(int dataValue){
-		boolean success = true;
-		return success;
+
+	/* A recursive function to insert a new key in BST */
+	private TreeElement deleteNode(TreeElement node, int key) {
+		/* Base Case: If the tree is empty */
+		if (node == null) {
+			return node;
+		}
+		/* Otherwise, recur down the tree */
+		if (key < node.data) {
+			node.left = deleteNode(node.left, key);
+		} else if (key > node.data) {
+			node.right = deleteNode(node.right, key);
+			// if key is same as root's key, then This is the node
+			// to be deleted
+		}else {
+			// node with only one child or no child
+			if (node.left == null) {
+				return node.right;
+			} else if (node.right == null) {
+				return node.left;
+			}
+			// node with two children: Get the inorder successor (smallest
+			// in the right subtree)
+			node.data = minValue(node.right);
+			// Delete the inorder successor
+			node.right = deleteNode(node.right, node.data);
+		}
+		return node;
+	}
+
+	private int minValue(TreeElement node) {
+		int minv = node.data;
+		while (node.left != null) {
+			minv = node.left.data;
+			node = node.left;
+		}
+		return minv;
+	}
+
+	public boolean remove(int dataValue){
+		TreeElement delete = deleteNode(root, dataValue);
+		return true;
 	}
 	private boolean remove(TreeElement deleteMe){
 		boolean success = true;

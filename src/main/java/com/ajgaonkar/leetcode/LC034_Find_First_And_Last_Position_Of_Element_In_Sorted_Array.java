@@ -1,7 +1,5 @@
 package com.ajgaonkar.leetcode;
 
-//ToDo: Redo
-//ToDo: Optimize
 public class LC034_Find_First_And_Last_Position_Of_Element_In_Sorted_Array {
 	//This is O(n)
 	//Use Binary search for O(log n)
