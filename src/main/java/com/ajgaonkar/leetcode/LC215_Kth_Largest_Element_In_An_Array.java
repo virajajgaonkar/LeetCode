@@ -9,54 +9,48 @@ Option 3: QuickSort, O(N) best case / O(N^2) worst case running time + O(1) memo
 Option 4: Shuffle + QuickSort, O(N) guaranteed running time + O(1) space
  */
 public class LC215_Kth_Largest_Element_In_An_Array {
+	private void swap(int[] arr, int i, int j){
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	private void shuffle(int[] arr){
+		Random random = new Random();
+		for(int i=0; i< arr.length; i++){
+			int j = Math.abs(random.nextInt()) % arr.length;
+			swap(arr, i, j);
+		}
+	}
+
+	private int partition(int[] arr, int lo, int hi, int pivot){
+		while (lo <= hi){
+			while (arr[lo] < pivot){
+				lo++;
+			}
+			while (arr[hi] > pivot){
+				hi--;
+			}
+			if(lo <= hi){
+				swap(arr, lo, hi);
+				lo++;
+				hi--;
+			}
+		}
+		return lo;
+	}
+
+	private void quickSort(int[] arr, int lo, int hi){
+		if(lo >= hi){
+			return;
+		}
+		int pivot = arr[(lo + hi)/2];
+		int index = partition(arr, lo, hi, pivot);
+		quickSort(arr, lo, index-1);
+		quickSort(arr, index, hi);
+	}
 	public int findKthLargest(int[] nums, int k) {
 		shuffle(nums);
-		k = nums.length - k;
-		int lo = 0;
-		int hi = nums.length - 1;
-		while (lo < hi) {
-			final int j = partition(nums, lo, hi);
-			if(j < k) {
-				lo = j + 1;
-			} else if (j > k) {
-				hi = j - 1;
-			} else {
-				break;
-			}
-		}
-		return nums[k];
-	}
-
-	private void shuffle(int a[]) {
-		final Random random = new Random();
-		for(int ind = 1; ind < a.length; ind++) {
-			final int r = random.nextInt(ind + 1);
-			swap(a, ind, r);
-		}
-	}
-
-	private int partition(int[] a, int lo, int hi) {
-		int i = lo;
-		int j = hi + 1;
-		while(true) {
-			while(i < hi && less(a[++i], a[lo]));
-			while(j > lo && less(a[lo], a[--j]));
-			if(i >= j) {
-				break;
-			}
-			swap(a, i, j);
-		}
-		swap(a, lo, j);
-		return j;
-	}
-
-	private void swap(int[] a, int i, int j) {
-		final int tmp = a[i];
-		a[i] = a[j];
-		a[j] = tmp;
-	}
-
-	private boolean less(int v, int w) {
-		return v < w;
+		quickSort(nums, 0, nums.length-1);
+		return nums[nums.length -k];
 	}
 }

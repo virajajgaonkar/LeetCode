@@ -106,6 +106,49 @@ public class CollectionsPriorityQueue {
 		System.out.println("---------------");
 	}
 
+	public static class Node implements Comparable<Node>{
+		private final int data;
+		private final int index;
+
+		public Node(int data, int index) {
+			this.data = data;
+			this.index = index;
+		}
+
+		@Override
+		public int compareTo(Node o) {
+			if(this.data == o.data){
+				return o.index - this.index;
+			}
+			return o.data - this.data;
+		}
+
+		@Override
+		public String toString() {
+			final StringBuffer sb = new StringBuffer("Node{");
+			sb.append("data=").append(data);
+			sb.append(", index=").append(index);
+			sb.append('}');
+			return sb.toString();
+		}
+	}
+
+	public void testObjectSort(){
+		PriorityQueue<Node> q = new PriorityQueue<>();
+		q.offer(new Node(1, q.size()));
+		q.offer(new Node(2, q.size()));
+		q.offer(new Node(3, q.size()));
+		q.offer(new Node(4, q.size()));
+		q.offer(new Node(5, q.size()));
+		q.offer(new Node(5, q.size()));
+		q.offer(new Node(4, q.size()));
+		q.offer(new Node(3, q.size()));
+
+		while (!q.isEmpty()){
+			System.out.println(q.poll());
+		}
+	}
+
 	public static void main (String[] args){
 		CollectionsPriorityQueue test = new CollectionsPriorityQueue();
 		test.testSafe();
@@ -113,7 +156,8 @@ public class CollectionsPriorityQueue {
 		test.testUnSafe();
 		System.out.println("------------------------");
 		test.testStringSort();
-
+		System.out.println("------------------------");
+		test.testObjectSort();
 
 		boolean startsWith = true;
 		boolean doesNotStartWith = !startsWith;
