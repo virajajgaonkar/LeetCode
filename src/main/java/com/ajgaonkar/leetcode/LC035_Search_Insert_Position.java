@@ -2,6 +2,8 @@ package com.ajgaonkar.leetcode;
 
 //ToDo: Redo
 public class LC035_Search_Insert_Position {
+	//This is O(n)
+	//Use Binary search for O(log n)
 	public int searchInsert(int[] nums, int target) {
 		if(nums == null){
 			return 0;

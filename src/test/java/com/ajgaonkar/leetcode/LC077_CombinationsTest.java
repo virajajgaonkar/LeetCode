@@ -9,7 +9,8 @@ import static org.junit.Assert.*;
 
 
 public class LC077_CombinationsTest {
-	LC077_Combinations test = new LC077_Combinations();
+	//LC077_Combinations test = new LC077_Combinations();
+	LC077_Combinations_2 test = new LC077_Combinations_2();
 
 	@Test
 	public void test(){

@@ -10,12 +10,14 @@ public class LC089_Gray_Code {
 		rs.add(0);
 		for (int i = 0; i < n; i++) {
 			int size = rs.size();
-//			System.out.println(size);
+			System.out.println(size);
 			for (int k = size - 1; k >= 0; k--) {
 				int mask = (1 << i);
 //				System.out.println("i = " + i + " k = " + k + " mask = " + mask);
 				int newNumber = (rs.get(k) | 1 << i);
 //				System.out.println("newNumber = " + newNumber);
+
+				System.out.println("i = " + i + " k = " + k + " mask = " + mask + " input = " + rs.get(k) + " newNumber = " + newNumber);
 				rs.add(newNumber);
 			}
 		}

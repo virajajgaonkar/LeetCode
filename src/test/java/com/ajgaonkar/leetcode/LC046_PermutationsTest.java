@@ -8,7 +8,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class LC046_PermutationsTest {
-	LC046_Permutations test = new LC046_Permutations();
+	//LC046_Permutations test = new LC046_Permutations();
+	LC046_Permutations_2 test = new LC046_Permutations_2();
 
 	@Test
 	public void test(){

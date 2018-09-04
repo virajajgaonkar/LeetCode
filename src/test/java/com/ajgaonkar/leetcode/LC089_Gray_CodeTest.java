@@ -8,7 +8,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class LC089_Gray_CodeTest {
-	LC089_Gray_Code test = new LC089_Gray_Code();
+	//LC089_Gray_Code test = new LC089_Gray_Code();
+	LC089_Gray_Code_2 test = new LC089_Gray_Code_2();
 	@Test
 	public void test1(){
 		List<Integer> actual = test.grayCode(2);
